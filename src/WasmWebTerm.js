@@ -1,6 +1,6 @@
 import * as Comlink from "comlink"
 
-import { FitAddon } from "xterm-addon-fit"
+//import { FitAddon } from "xterm-addon-fit"
 import XtermEchoAddon from "local-echo"
 
 import WasmWorkerRAW from "./runners/WasmWorker" // will be prebuilt using webpack
@@ -76,16 +76,16 @@ class WasmWebTerm {
         this._xterm = xterm
 
         // create xterm addon to fit size
-        this._xtermFitAddon = new FitAddon()
-        this._xtermFitAddon.activate(this._xterm)
+        //this._xtermFitAddon = new FitAddon()
+        //this._xtermFitAddon.activate(this._xterm)
 
         // fit xterm size to container
-        setTimeout(() => this._xtermFitAddon.fit(), 1)
+        //setTimeout(() => this._xtermFitAddon.fit(), 1)
 
         // handle container resize
-        window.addEventListener("resize", () => {
-            this._xtermFitAddon.fit()
-        })
+        //window.addEventListener("resize", () => {
+        //    this._xtermFitAddon.fit()
+        //})
 
         // handle module drag and drop
         setTimeout(() => this._initWasmModuleDragAndDrop(), 1)
@@ -134,7 +134,7 @@ class WasmWebTerm {
 
     async dispose() {
         await this._xtermEcho.dispose()
-        await this._xtermFitAddon.dispose()
+        //await this._xtermFitAddon.dispose()
         if(this._worker) this._workerRAW.terminate()
         await this.onDisposed()
     }
